@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación a Ceremonia de Graduación</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --vinotinto: #6B1C40;
+            --vinotinto-light: #8B2352;
+            --vinotinto-dark: #4A1229;
+            --azul: #1E3A8A;
+            --azul-light: #3B82F6;
+            --azul-sky: #60A5FA;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--vinotinto) 0%, var(--azul) 100%);
+            min-height: 100vh;
+            padding: 15px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .invitation-card {
+            max-width: 450px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            position: relative;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, var(--vinotinto) 0%, var(--vinotinto-light) 50%, var(--azul) 100%);
+            color: white;
+            padding: 50px 30px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-section::before {
+            content: '🎓';
+            position: absolute;
+            font-size: 150px;
+            opacity: 0.1;
+            top: -20px;
+            right: -30px;
+            transform: rotate(-15deg);
+        }
+
+        .header-section::after {
+            content: '⭐';
+            position: absolute;
+            font-size: 80px;
+            opacity: 0.15;
+            bottom: 10px;
+            left: -10px;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.15; transform: scale(1); }
+            50% { opacity: 0.25; transform: scale(1.1); }
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            opacity: 0.3;
+            animation: fall 4s infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 0.3; }
+            100% { transform: translateY(600px) rotate(360deg); opacity: 0; }
+        }
+
+        .confetti:nth-child(1) { left: 10%; animation-delay: 0s; background: #FCD34D; }
+        .confetti:nth-child(2) { left: 30%; animation-delay: 0.5s; background: #60A5FA; }
+        .confetti:nth-child(3) { left: 50%; animation-delay: 1s; background: #F472B6; }
+        .confetti:nth-child(4) { left: 70%; animation-delay: 1.5s; background: #34D399; }
+        .confetti:nth-child(5) { left: 90%; animation-delay: 2s; background: #A78BFA; }
+
+        .invitation-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header-section h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.3;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-section p {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-bottom: 0;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            padding: 0 20px 20px;
+        }
+
+        .ceremony-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
+            padding: 30px 25px;
+            margin: -30px 0 25px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(107, 28, 64, 0.15);
+            border: 3px solid white;
+            position: relative;
+        }
+
+        .ceremony-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--vinotinto), var(--azul), var(--vinotinto));
+            border-radius: 25px 25px 0 0;
+        }
+
+        .ceremony-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--vinotinto);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 18px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 4px 15px rgba(107, 28, 64, 0.08);
+            border-left: 5px solid var(--azul);
+            transition: all 0.3s ease;
+        }
+
+        .detail-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(107, 28, 64, 0.15);
+        }
+
+        .detail-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-icon {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--vinotinto), var(--vinotinto-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            margin-right: 18px;
+            box-shadow: 0 5px 15px rgba(107, 28, 64, 0.3);
+            position: relative;
+        }
+
+        .detail-icon::after {
+            content: '';
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            width: 15px;
+            height: 15px;
+            background: var(--azul-light);
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .detail-content {
+            flex: 1;
+        }
+
+        .detail-label {
+            font-size: 0.75rem;
+            color: var(--vinotinto);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .detail-text {
+            font-size: 1.05rem;
+            color: #1F2937;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .program-card {
+            padding: 25px;
+            background: linear-gradient(135deg, var(--azul) 0%, #2563EB 100%);
+            margin: 25px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '✨';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            top: -20px;
+            right: -20px;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .program-card h3 {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .program-card h3 i {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 1.3rem;
+        }
+
+        .program-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .program-list li {
+            color: white;
+            font-size: 0.95rem;
+            padding: 10px 0 10px 35px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .program-list li::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: #FCD34D;
+            font-size: 1.2rem;
+            top: 8px;
+        }
+
+        .graduates-section {
+            padding: 30px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-header::before,
+        .section-header::after {
+            content: '✦';
+            position: absolute;
+            color: var(--vinotinto);
+            font-size: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.3;
+        }
+
+        .section-header::before { left: 10px; }
+        .section-header::after { right: 10px; }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--vinotinto);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--azul);
+            font-weight: 600;
+        }
+
+        .photo-frame {
+            text-align: center;
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .carousel {
+            max-width: 340px;
+            margin: 0 auto;
+        }
+
+        .carousel-indicators {
+            margin-bottom: -15px;
+            position: relative;
+            bottom: auto;
+            z-index: 2;
+        }
+
+        .carousel-indicators [data-bs-target] {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--vinotinto);
+            opacity: 0.4;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicators .active {
+            opacity: 1;
+            background-color: var(--azul);
+            transform: scale(1.2);
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 45px;
+            height: 45px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 1;
+        }
+
+        .carousel-control-prev {
+            left: -15px;
+        }
+
+        .carousel-control-next {
+            right: -15px;
+        }
+
+        .carousel-control-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--vinotinto), var(--vinotinto-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(107, 28, 64, 0.4);
+            transition: all 0.3s ease;
+            border: 3px solid white;
+        }
+
+        .carousel-control-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 7px 20px rgba(107, 28, 64, 0.5);
+        }
+
+        .carousel-control-icon i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-image: none;
+        }
+
+        .photo-container {
+            width: 100%;
+            max-width: 340px;
+            height: 220px;
+            background: linear-gradient(135deg, #E5E7EB 0%, #F3F4F6 100%);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            border: 5px solid white;
+            box-shadow: 0 10px 40px rgba(107, 28, 64, 0.15);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-container:hover {
+            transform: scale(1.02);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+        }
+
+        .image-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            z-index: 10000;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(107, 28, 64, 0.8);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--vinotinto);
+            transform: rotate(90deg);
+        }
+
+        .modal-counter {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: rgba(107, 28, 64, 0.8);
+            padding: 10px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(107, 28, 64, 0.8);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 10000;
+        }
+
+        .modal-nav:hover {
+            background: var(--vinotinto);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .modal-nav.prev {
+            left: 20px;
+        }
+
+        .modal-nav.next {
+            right: 20px;
+        }
+
+        .graduates-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .graduate-card {
+            background: linear-gradient(135deg, white 0%, #F9FAFB 100%);
+            padding: 18px 15px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 4px 15px rgba(107, 28, 64, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .graduate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--vinotinto), var(--azul));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .graduate-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(107, 28, 64, 0.2);
+            border-color: var(--vinotinto-light);
+        }
+
+        .graduate-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .graduate-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--vinotinto), var(--vinotinto-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(107, 28, 64, 0.3);
+        }
+
+        .graduate-name {
+            font-size: 0.95rem;
+            color: #1F2937;
+            font-weight: 700;
+            line-height: 1.3;
+            flex: 1;
+        }
+
+        .footer-section {
+            background: linear-gradient(135deg, var(--vinotinto-dark) 0%, var(--vinotinto) 50%, var(--azul) 100%);
+            color: white;
+            padding: 35px 25px;
+            text-align: center;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .footer-ornament {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, white, transparent);
+            margin: 0 auto 20px;
+            border-radius: 2px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .footer-icon-wrapper {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-icon-wrapper i {
+            font-size: 1.5rem;
+        }
+
+        .footer-school-name {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-website {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            opacity: 0.75;
+            margin: 0;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .modal-close {
+                font-size: 2rem;
+                width: 40px;
+                height: 40px;
+                top: 10px;
+                right: 10px;
+            }
+
+            .modal-nav {
+                font-size: 1.5rem;
+                width: 45px;
+                height: 45px;
+            }
+
+            .modal-nav.prev {
+                left: 10px;
+            }
+
+            .modal-nav.next {
+                right: 10px;
+            }
+
+            .modal-counter {
+                font-size: 1rem;
+                padding: 8px 20px;
+                bottom: 20px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .graduates-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-section h1 {
+                font-size: 1.6rem;
+            }
+            
+            .ceremony-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-card">
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+
+        <div class="header-section">
+            <div class="invitation-badge">✨ Invitación Grados Transición ✨</div>
+            <h1>¡Estás Invitado a Celebrar con Nosotros La Graduación de Nuestros Pequeños!</h1>
+            <p>Únete a nuestra ceremonia de graduación y celebra este hito memorable en el viaje de aprendizaje de nuestros estudiantes.</p>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="ceremony-card">
+                <h2 class="ceremony-title">🎓 Ceremonia de Ascenso</h2>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="detail-content">
+                        <div class="detail-label">Fecha</div>
+                        <div class="detail-text">Viernes, 28 de Noviembre de 2028</div>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="detail-content">
+                        <div class="detail-label">Hora</div>
+                        <div class="detail-text">01:00 PM</div>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="detail-content">
+                        <div class="detail-label">Lugar</div>
+                        <div class="detail-text">I.E Jorge Eliecer Gaitán</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="program-card">
+                <h3>
+                    <i class="fas fa-list-ul"></i>
+                    Programa del Evento
+                </h3>
+                <ul class="program-list">
+                    <li>Discurso de los estudiantes</li>
+                    <li>Ceremonia de entrega de certificados</li>
+                    <li>Despedida</li>
+                </ul>
+            </div>
+
+            <div class="graduates-section">
+                <div class="section-header">
+                    <h2 class="section-title">Clase de 2025</h2>
+                    <p class="section-subtitle">Nuestros Pequeños Graduados</p>
+                </div>
+
+                <div class="photo-frame">
+                    <div id="graduationCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#graduationCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#graduationCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#graduationCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#graduationCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#graduationCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#graduationCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                            <button type="button" data-bs-target="#graduationCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                            <button type="button" data-bs-target="#graduationCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                            <button type="button" data-bs-target="#graduationCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                            <button type="button" data-bs-target="#graduationCarousel" data-bs-slide-to="9" aria-label="Slide 10"></button>
+                            <button type="button" data-bs-target="#graduationCarousel" data-bs-slide-to="10" aria-label="Slide 11"></button>
+                        </div>
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="photo-container">
+                                    <img src="img/1.jpg" alt="Foto 1">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="photo-container">
+                                    <img src="img/2.jpg" alt="Foto 2">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="photo-container">
+                                    <img src="img/3.jpg" alt="Foto 3">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="photo-container">
+                                    <img src="img/4.jpg" alt="Foto 4">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="photo-container">
+                                    <img src="img/5.jpg" alt="Foto 5">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="photo-container">
+                                    <img src="img/6.jpg" alt="Foto 6">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="photo-container">
+                                    <img src="img/7.jpg" alt="Foto 7">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="photo-container">
+                                    <img src="img/8.jpg" alt="Foto 8">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="photo-container">
+                                    <img src="img/9.jpg" alt="Foto 9">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="photo-container">
+                                    <img src="img/10.jpg" alt="Foto 10">
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="photo-container">
+                                    <img src="img/11.jpg" alt="Foto 11">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#graduationCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#graduationCarousel" data-bs-slide="next">
+                            <span class="carousel-control-icon">
+                                <i class="fas fa-chevron-right"></i>
+                            </span>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="section-header" style="margin-top: 40px;">
+                    <h2 class="section-title" style="font-size: 1.4rem;">Celebrando a Nuestros Pequeños</h2>
+                </div>
+
+                <div class="graduates-grid">
+                    <div class="graduate-card">
+                        <div class="graduate-icon">⭐</div>
+                        <span class="graduate-name">Ana Herrera</span>
+                    </div>
+                    <div class="graduate-card">
+                        <div class="graduate-icon">⭐</div>
+                        <span class="graduate-name">Bella Martínez</span>
+                    </div>
+                    <div class="graduate-card">
+                        <div class="graduate-icon">🌟</div>
+                        <span class="graduate-name">Charlie Davis</span>
+                    </div>
+                    <div class="graduate-card">
+                        <div class="graduate-icon">✨</div>
+                        <span class="graduate-name">Diana Smith</span>
+                    </div>
+                    <div class="graduate-card">
+                        <div class="graduate-icon">⭐</div>
+                        <span class="graduate-name">Ethan Williams</span>
+                    </div>
+                    <div class="graduate-card">
+                        <div class="graduate-icon">🌟</div>
+                        <span class="graduate-name">Fiona Brown</span>
+                    </div>
+                    <div class="graduate-card">
+                        <div class="graduate-icon">✨</div>
+                        <span class="graduate-name">George Johnson</span>
+                    </div>
+                    <div class="graduate-card">
+                        <div class="graduate-icon">⭐</div>
+                        <span class="graduate-name">Hannah García</span>
+                    </div>
+                    <div class="graduate-card">
+                        <div class="graduate-icon">🌟</div>
+                        <span class="graduate-name">Ian Wilson</span>
+                    </div>
+                    <div class="graduate-card">
+                        <div class="graduate-icon">✨</div>
+                        <span class="graduate-name">Jazmin López</span>
+                    </div>
+                    <div class="graduate-card">
+                        <div class="graduate-icon">⭐</div>
+                        <span class="graduate-name">Kevin Clark</span>
+                    </div>
+                    <div class="graduate-card">
+                        <div class="graduate-icon">🌟</div>
+                        <span class="graduate-name">Luna Rodríguez</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <div class="footer-ornament"></div>
+            <div class="footer-logo">
+                <div class="footer-icon-wrapper">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="footer-school-name">I.E<br>JORGE ELIECER GAITÁN</div>
+            </div>
+            <div class="footer-website">📍 https://www.iejorgeeliecergaitan.edu.co/</div>
+            <p class="footer-copyright">© 2025 I.E Jorge Eliecer Gaitán. Todos los derechos reservados.</p>
+        </div>
+    </div>
+
+    <div id="imageModal" class="image-modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <span class="modal-nav prev" onclick="changeModalImage(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </span>
+        <img id="modalImage" class="modal-content-image" src="" alt="Imagen en pantalla completa">
+        <span class="modal-nav next" onclick="changeModalImage(1)">
+            <i class="fas fa-chevron-right"></i>
+        </span>
+        <div class="modal-counter">
+            <span id="modalCounter">1 / 11</span>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentModalIndex = 0;
+        const carouselItems = document.querySelectorAll('#graduationCarousel .carousel-item');
+        
+        document.querySelectorAll('.photo-container').forEach((container, index) => {
+            container.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                if (img && img.src) {
+                    openModal(index);
+                }
+            });
+        });
+
+        function openModal(index) {
+            currentModalIndex = index;
+            updateModalImage();
+            document.getElementById('imageModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeModalImage(direction) {
+            currentModalIndex += direction;
+            
+            if (currentModalIndex < 0) {
+                currentModalIndex = carouselItems.length - 1;
+            } else if (currentModalIndex >= carouselItems.length) {
+                currentModalIndex = 0;
+            }
+            
+            updateModalImage();
+        }
+
+        function updateModalImage() {
+            const currentItem = carouselItems[currentModalIndex];
+            const img = currentItem.querySelector('.photo-container img');
+            
+            if (img && img.src) {
+                document.getElementById('modalImage').src = img.src;
+                document.getElementById('modalCounter').textContent = `${currentModalIndex + 1} / ${carouselItems.length}`;
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            } else if (e.key === 'ArrowLeft') {
+                changeModalImage(-1);
+            } else if (e.key === 'ArrowRight') {
+                changeModalImage(1);
+            }
+        });
+
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
